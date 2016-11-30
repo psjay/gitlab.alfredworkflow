@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>li.zhu.alfred.gitlabproject</string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
@@ -15,6 +17,8 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -25,14 +29,16 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>GitLab Projects</string>
+	<string>GitLab</string>
 	<key>objects</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>plusspaces</key>
-				<false/>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
 				<key>url</key>
 				<string>{query}</string>
 				<key>utf8</key>
@@ -43,17 +49,27 @@
 			<key>uid</key>
 			<string>2A7AEA9A-9C99-469D-A4E5-A4B4C951F050</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>36</integer>
+				<integer>39</integer>
 				<key>keyword</key>
 				<string>gl</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string>Retrieving search suggestions ...</string>
 				<key>script</key>
@@ -72,7 +88,7 @@ $query = urlencode( "{query}" );
 
 require_once('workflows.php');
 
-$url = $gitlab.'/api/v3/projects/search/'.$query;
+$url = $gitlab.'/api/v3/projects/?simple=true&amp;search='.$query;
 
 
 $wf = new Workflows();
@@ -90,6 +106,10 @@ if(count($repos) &gt; 0) {
 } 
 
 echo $wf-&gt;toxml();</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
 				<key>subtext</key>
 				<string>Search Projects on your GitLab</string>
 				<key>title</key>
@@ -104,7 +124,7 @@ echo $wf-&gt;toxml();</string>
 			<key>uid</key>
 			<string>63F60794-BB56-4415-9372-BAF974C3A7E1</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -115,11 +135,15 @@ Change the token in the ‘script fliter’</string>
 	<dict>
 		<key>2A7AEA9A-9C99-469D-A4E5-A4B4C951F050</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
 		<key>63F60794-BB56-4415-9372-BAF974C3A7E1</key>
 		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
 			<key>ypos</key>
 			<real>20</real>
 		</dict>
